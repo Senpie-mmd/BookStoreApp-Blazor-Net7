@@ -44,6 +44,7 @@ namespace BookStoreApp.API.Controllers
 
                 var authorsDto = authors.Select(n => new AuthorViewModel()
                 {
+                    Id = n.Id,
                     FirstName = n.FirstName,
                     LastName = n.LastName,
                     Bio = n.Bio
@@ -85,7 +86,7 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error Happend Getting {nameof(GetAuthors)}");
+                _logger.LogError(ex, $"Error Happend Getting {nameof(GetAuthor)}");
                 return StatusCode(500, Message.Error500Message);
             }
         }
@@ -115,7 +116,7 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error Happend Getting {nameof(GetAuthors)}");
+                _logger.LogError(ex, $"Error Happend Getting {nameof(PutAuthor)}");
                 return StatusCode(500, Message.Error500Message);
             }
 
@@ -125,7 +126,7 @@ namespace BookStoreApp.API.Controllers
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(CreateNewAuthorViewModel authorDto)
+        public async Task<ActionResult<AuthorViewModel>> PostAuthor(CreateNewAuthorViewModel authorDto)
         {
             try
             {
@@ -147,7 +148,7 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error Happend Getting {nameof(GetAuthors)}");
+                _logger.LogError(ex, $"Error Happend Getting {nameof(PostAuthor)}");
                 return StatusCode(500, Message.Error500Message);
             }
         }
@@ -175,7 +176,7 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error Happend Getting {nameof(GetAuthors)}");
+                _logger.LogError(ex, $"Error Happend Getting {nameof(DeleteAuthor)}");
                 return StatusCode(500, Message.Error500Message);
             }
         }
